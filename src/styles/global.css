@@ -5,48 +5,49 @@
  */
 
 :root {
-  --accent: #2337ff;
+  --accent: 255, 180, 82;
   --accent-dark: #000d8a;
   --black: 15, 18, 25;
   --gray: 96, 115, 159;
   --gray-light: 229, 233, 240;
   --gray-dark: 34, 41, 57;
   --gray-gradient: rgba(var(--gray-light), 50%), #fff;
-  --box-shadow: 0 2px 6px rgba(var(--gray), 25%),
-    0 8px 24px rgba(var(--gray), 33%), 0 16px 32px rgba(var(--gray), 33%);
+  --box-shadow:
+    0 2px 6px rgba(var(--accent), 2%), 0 8px 24px rgba(var(--accent), 5%),
+    0 16px 32px rgba(var(--accent), 5%);
 }
 @font-face {
-  font-family: "Atkinson";
-  src: url("/fonts/atkinson-regular.woff") format("woff");
-  font-weight: 400;
+  font-family: "Plus Jakarta Sans";
   font-style: normal;
+  font-weight: 200 800;
   font-display: swap;
-}
-@font-face {
-  font-family: "Atkinson";
-  src: url("/fonts/atkinson-bold.woff") format("woff");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/plusjakartasans/v8/LDIoaomQNQcsA88c7O9yZ4KMCoOg4Ko20yyghfvaZ-E.woff2)
+    format("woff2");
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
+    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 body {
-  font-family: "Atkinson", sans-serif;
+  font-family: "Plus Jakarta Sans", sans-serif;
   margin: 0;
   padding: 0;
   text-align: left;
-  background: linear-gradient(var(--gray-gradient)) no-repeat;
-  background-size: 100% 600px;
   word-wrap: break-word;
   overflow-wrap: break-word;
-  color: rgb(var(--gray-dark));
+  color: #fff;
   font-size: 20px;
   line-height: 1.7;
+  background-image:
+    radial-gradient(circle, #251b1100 0%, #251b1100 60%, #251b1133 80%, #251b1199 100%),
+    linear-gradient(to right, #402f254d 0%, #402f2500 20%, #402f2500 80%, #402f254d 100%),
+    linear-gradient(to top, #120a04 0%, #2e1f15 40%, #43342a 80%, #4c432f 100%);
+  background-attachment: fixed;
 }
 main {
   width: 720px;
-  max-width: calc(100% - 2em);
+  max-width: calc(100% - 32px);
   margin: auto;
-  padding: 3em 1em;
+  padding: 48px 16px;
 }
 h1,
 h2,
@@ -54,47 +55,48 @@ h3,
 h4,
 h5,
 h6 {
-  margin: 0 0 0.5rem 0;
-  color: rgb(var(--black));
-  line-height: 1.2;
+  margin: 32px 0;
+  color: #fff;
+  line-height: 1;
 }
 h1 {
-  font-size: 3.052em;
+  margin: 0;
+  font-size: 3.5rem;
+  font-weight: 800;
+  letter-spacing: -0.125rem;
 }
 h2 {
-  font-size: 2.441em;
+  font-size: 3rem;
 }
 h3 {
-  font-size: 1.953em;
+  font-size: 2.5rem;
 }
 h4 {
-  font-size: 1.563em;
+  font-size: 1rem;
 }
 h5 {
-  font-size: 1.25em;
+  font-size: 1.5rem;
 }
 strong,
 b {
   font-weight: 700;
 }
 a {
-  color: var(--accent);
+  color: rgb(var(--accent));
+  text-decoration: underline;
 }
 a:hover {
-  color: var(--accent);
+  color: rgb(var(--accent));
 }
 p {
-  margin-bottom: 1em;
-}
-.prose p {
-  margin-bottom: 2em;
+  margin-bottom: 16px;
 }
 textarea {
   width: 100%;
-  font-size: 16px;
+  font-size: 1rem;
 }
 input {
-  font-size: 16px;
+  font-size: 1rem;
 }
 table {
   width: 100%;
@@ -104,34 +106,53 @@ img {
   height: auto;
   border-radius: 8px;
 }
+a:hover img {
+  box-shadow: var(--box-shadow);
+}
 code {
   padding: 2px 5px;
-  background-color: rgb(var(--gray-light));
+  background-color: rgb(var(--gray-dark));
+  color: #ccf;
   border-radius: 2px;
 }
 pre {
-  padding: 1.5em;
+  padding: 24px;
   border-radius: 8px;
 }
 pre > code {
   all: unset;
 }
 blockquote {
-  border-left: 4px solid var(--accent);
+  border-left: 4px solid rgb(var(--accent));
   padding: 0 0 0 20px;
   margin: 0px;
-  font-size: 1.333em;
+  font-size: 1.333rem;
 }
 hr {
   border: none;
-  border-top: 1px solid rgb(var(--gray-light));
+  border-top: 1px solid rgb(255, 255, 255, 23%);
 }
 @media (max-width: 720px) {
   body {
-    font-size: 18px;
+    font-size: 1rem;
+  }
+  h1 {
+    font-size: 2.5rem;
+  }
+  h2 {
+    font-size: 2rem;
+  }
+  h3 {
+    font-size: 1.5rem;
+  }
+  h4 {
+    font-size: 1rem;
+  }
+  h5 {
+    font-size: 1rem;
   }
   main {
-    padding: 1em;
+    padding: 32px 16px;
   }
 }
 

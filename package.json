@@ -22,6 +22,7 @@
   },
   "devDependencies": {
     "@cloudflare/workers-types": "4.20250204.0",
+    "prettier": "^3.5.2",
     "wrangler": "3.107.3"
   },
   "scripts": {
@@ -33,5 +34,9 @@
     "preview": "astro build && wrangler dev",
     "types": "wrangler types"
   },
-  "type": "module"
+  "type": "module",
+  "prettier": {
+    "printWidth": 100,
+    "trailingComma": "all"
+  }
 }
