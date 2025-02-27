@@ -14,13 +14,20 @@ export async function getStaticPaths() {
 }
 type Props = CollectionEntry<"mods">;
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props.data;
+const {
+  title,
+  description,
+  pubDate,
+  updatedDate,
+  heroImage,
+  heroAspectRatio = "16/9",
+} = Astro.props.data;
 const { Content } = await render(Astro.props);
 ---
 
 <html lang="en">
   <head>
-    <BaseHead title={title} description={description} />
+    <BaseHead title={title} description={description} image={heroImage} />
     <style>
       main {
         width: calc(100% - 32px);
@@ -35,6 +42,7 @@ const { Content } = await render(Astro.props);
         margin: 0 auto;
         border-radius: 12px;
         box-shadow: var(--box-shadow);
+        background-color: rgb(var(--black));
       }
       .prose {
         width: 720px;
@@ -64,7 +72,17 @@ const { Content } = await render(Astro.props);
     <main>
       <article>
         <div class="hero-image">
-          {heroImage && <img width={1020} height={510} src={heroImage} alt="" />}
+          {
+            heroImage && (
+              <img
+                width={1020}
+                height={510}
+                src={heroImage}
+                style={`aspect-ratio:${heroAspectRatio}`}
+                alt=""
+              />
+            )
+          }
         </div>
         <div class="prose">
           <div class="title">
